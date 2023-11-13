@@ -6,13 +6,14 @@ import {combineReducers, createStore, applyMiddleware} from 'redux' ;
 import myFirstReducer from './reducer.jsx';
 import createSagaMiddleware from 'redux-saga' ;
 import mySaga from './sagas' ;
+import { composeWithDevTools } from "redux-devtools-extension";
 
  
 import './index.css'
 
 const sagaMiddleWare = createSagaMiddleware();
 const rootReducer = combineReducers({myFirstReducer});
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare)) ;
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleWare), composeWithDevTools()) ;
 sagaMiddleWare.run(mySaga) ;
 
 
